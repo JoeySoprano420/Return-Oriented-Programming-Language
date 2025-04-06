@@ -1,0 +1,10 @@
+func chain3(a, b, c):
+    return a -> b -> c
+
+func router(cond, ifTrue, ifFalse):
+    return cond ? ifTrue : ifFalse
+
+func recur(func, maxDepth):
+    if maxDepth <= 0:
+        return end
+    return func -> recur(func, maxDepth - 1)
