@@ -1,0 +1,4 @@
+@link "bin://utils/io.rop" => %link_IO
+@link "dyn://tunnel/node7x-α" => @remotePort9
+
+return call_link(%link_IO, "dump_buffer")
