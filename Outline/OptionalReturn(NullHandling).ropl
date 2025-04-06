@@ -1,0 +1,17 @@
+func find_item(id: int) -> optional<string>:
+    if id == 1:
+        return "Item 1"
+    else:
+        return null
+
+let item = find_item(1)
+if item != null:
+    print(item)  # Output: Item 1
+else:
+    print("Item not found")
+
+let no_item = find_item(2)
+if no_item != null:
+    print(no_item)
+else:
+    print("Item not found")  # Output: Item not found
