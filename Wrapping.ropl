@@ -1,0 +1,9 @@
+@wrap "PulseCheck" => {
+    condition: pulse_match("edge_detected"),
+    exec: {
+        push 0xAA
+        call %SYS_EXEC
+    }
+}
+
+return wrap_resolve("PulseCheck")
