@@ -1,0 +1,8 @@
+@bind "injec_addr" => %R12
+@wrap "boot_sec" => {
+    condition: if_stack("bootflag"),
+    exec: { jmp %R12 }
+}
+@link "raw://drivers/core_blit" => %linkX
+
+return exec(wrap_resolve("boot_sec"))  ; Return final jump
