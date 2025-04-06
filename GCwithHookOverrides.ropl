@@ -1,0 +1,20 @@
+# Register an object for GC with custom cleanup
+func track_object(obj):
+    return GC.register(obj, cleanup_func)
+
+# Define cleanup logic
+func cleanup_func(obj):
+    print("Cleaning up: " + obj.name)
+    return "Cleaned"
+
+# Override the garbage collector behavior
+func custom_gc_strategy:
+    # Called during GC cycle
+    return GC.override(strategy_func)
+
+func strategy_func(objects):
+    # Custom logic to mark/sweep
+    foreach obj in objects:
+        if obj.marked == false:
+            cleanup_func(obj)
+    return "Custom GC cycle complete"
