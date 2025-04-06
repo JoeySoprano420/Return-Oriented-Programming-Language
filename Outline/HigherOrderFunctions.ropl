@@ -1,0 +1,5 @@
+func apply_to_all(func, list):
+    let result = []
+    for item in list:
+        result.append(func(item))
+    return result
