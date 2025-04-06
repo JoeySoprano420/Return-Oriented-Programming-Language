@@ -1,0 +1,8 @@
+func is_number(x):
+    return typeof(x) == "number"
+
+func is_string(x):
+    return typeof(x) == "string"
+
+func is_bool(x):
+    return typeof(x) == "bool"
