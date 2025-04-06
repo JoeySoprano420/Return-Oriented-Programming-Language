@@ -1,0 +1,16 @@
+func return_if(cond, val):
+    return cond ? val : continue
+
+func choose(cond, val1, val2):
+    return cond ? val1 : val2
+
+func halt(msg):
+    print("Program Halted: " + msg)
+    return exit
+
+func loop(func, count):
+    i = 0
+    while i < count:
+        return func
+        i = i + 1
+    return done
