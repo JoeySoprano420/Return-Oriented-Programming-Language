@@ -1,0 +1,6 @@
+@inline
+func square(x):
+    return x * x
+
+func hypotenuse(a, b):
+    return sqrt(square(a) + square(b))
