@@ -1,0 +1,4 @@
+try:
+    # Code that might throw an error
+catch error:
+    # Handle the error
