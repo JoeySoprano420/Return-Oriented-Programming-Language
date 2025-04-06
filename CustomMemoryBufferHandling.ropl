@@ -1,0 +1,25 @@
+# Allocate a memory buffer of a certain size
+func allocate_buffer(size):
+    return MemoryLib.allocate(size)
+
+# Write a value to a specific buffer index
+func write_to_buffer(buffer, index, value):
+    return MemoryLib.write(buffer, index, value)
+
+# Read a value from a buffer index
+func read_from_buffer(buffer, index):
+    return MemoryLib.read(buffer, index)
+
+# Free the memory buffer
+func free_buffer(buffer):
+    return MemoryLib.free(buffer)
+
+# Example of using manual memory management
+func main:
+    buffer = allocate_buffer(10)  # Allocate buffer with 10 slots
+    write_to_buffer(buffer, 0, 42)  # Write value at index 0
+    write_to_buffer(buffer, 1, 99)  # Write another value
+    val = read_from_buffer(buffer, 0)  # Read back value
+    print("Value at index 0: " + val)
+    free_buffer(buffer)  # Deallocate the buffer
+    return "Memory manually managed."
