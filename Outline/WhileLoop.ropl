@@ -1,2 +1,5 @@
 while condition:
     # Code block
+
+while condition exit_condition:
+    # Do something
