@@ -1,0 +1,7 @@
+switch expression:
+    case value1:
+        # Code block
+    case value2:
+        # Code block
+    default:
+        # Code block
