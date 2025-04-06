@@ -1,0 +1,2 @@
+func logic_flow:
+    return eq(5, 5) -> router(true, add(1, 2), sub(5, 2)) -> print
