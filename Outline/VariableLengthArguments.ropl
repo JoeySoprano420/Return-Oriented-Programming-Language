@@ -1,0 +1,5 @@
+func add_numbers(...args):
+    let sum = 0
+    for num in args:
+        sum += num
+    return sum
