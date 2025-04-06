@@ -1,0 +1,15 @@
+# Primitive Types
+let is_valid = true           # Boolean
+let age = 25                  # Integer
+let price = 19.99             # Float
+let initial = 'A'             # Character
+let not_initialized = null    # Null
+
+# Complex Types
+let numbers = [1, 2, 3, 4, 5]  # Array
+let names = List("Alice", "Bob", "Charlie")  # List
+let coordinates = (1, 2, 3)  # Tuple
+let person = Dictionary("name" => "John", "age" => 30)  # Dictionary
+let unique_ids = Set(1, 2, 3, 4)  # Set
+let queue = Queue(10, 20, 30)  # Queue
+let stack = Stack(100, 200, 300)  # Stack
