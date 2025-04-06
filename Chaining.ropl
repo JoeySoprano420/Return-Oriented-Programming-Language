@@ -1,0 +1,8 @@
+@chain "boot_seq" => [
+    call %R3,
+    exec(wrap_resolve("boot_guard")),
+    call %link_IO,
+    return
+]
+
+exec_chain("boot_seq")  ; Executes each node in sequence
