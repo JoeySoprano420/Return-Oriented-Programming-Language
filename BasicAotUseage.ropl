@@ -1,0 +1,11 @@
+# Mark a function for AOT compilation
+@compile_aot
+func critical_math(a, b):
+    return (a * b + 13) << 2
+
+# Trigger AOT build (offline or runtime-triggered)
+func build:
+    return AOT.compile("critical_math")
+
+# Produces:
+# > Out.bin or InMemoryStream[] buffer
