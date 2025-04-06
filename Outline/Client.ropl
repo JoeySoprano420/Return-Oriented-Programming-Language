@@ -1,0 +1,11 @@
+func create_client_socket(host, port):
+    return NetworkLib.create_client_socket(host, port)
+
+func send_message_to_server(client_socket, message):
+    return send_data(client_socket, message)
+
+func main:
+    client_socket = create_client_socket("localhost", 8080)
+    send_message_to_server(client_socket, "Hello, Server!")
+    response = receive_data(client_socket)
+    return response  # Server response will be "Received: Hello, Server!"
