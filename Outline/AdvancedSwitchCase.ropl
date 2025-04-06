@@ -1,0 +1,7 @@
+switch value:
+    case 1, 2, 3:
+        # Case for 1, 2, or 3
+    case 4..10:  # Range case
+        # Case for values between 4 and 10
+    default:
+        # Default case
