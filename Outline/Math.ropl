@@ -1,0 +1,2 @@
+let result = abs(-5)  # Result is 5
+let root = sqrt(16)  # Result is 4
