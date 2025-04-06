@@ -1,0 +1,5 @@
+@inline
+@compile_aot
+func fast_path(x):
+    ref<int> z = ref_create(x + 99)
+    return z
