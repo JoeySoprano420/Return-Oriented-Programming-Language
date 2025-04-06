@@ -1,0 +1,43 @@
+struct Person:
+    var name: string
+    var age: int
+
+# Function returning an int
+func multiply(a: int, b: int) -> int:
+    return a * b
+
+# Function returning a string
+func greet(name: string) -> string:
+    return "Hello, " + name
+
+# Function returning a dictionary
+func get_person_info() -> dictionary:
+    return Dictionary("name" => "Alice", "age" => 25)
+
+# Function returning a tuple
+func get_coordinates() -> tuple(float, float):
+    return 10.5, 20.3
+
+# Function returning an optional
+func find_item(id: int) -> optional<string>:
+    if id == 1:
+        return "Item 1"
+    else:
+        return null
+
+# Function returning void
+func print_hello() -> void:
+    print("Hello World!")
+
+# Main program
+let product = multiply(5, 6)  # Returns an int
+let message = greet("Alice")  # Returns a string
+let person = get_person_info()  # Returns a dictionary
+let coords = get_coordinates()  # Returns a tuple
+let item = find_item(1)  # Returns an optional string
+
+print(product)
+print(message)
+print(person)
+print(coords)
+print(item)
