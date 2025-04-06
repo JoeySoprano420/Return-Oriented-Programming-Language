@@ -1,0 +1,235 @@
+## **ROPLang: Complete Specification**
+
+### **1. Operators in ROPLang**
+
+**Basic Operators:**
+- **Arithmetic**: `+`, `-`, `*`, `/`, `%`
+- **Comparison**: `==`, `!=`, `<`, `>`, `<=`, `>=`
+- **Logical**: `&&`, `||`, `!`
+- **Assignment**: `=`, `+=`, `-=`, `*=`, `/=`
+- **Bitwise**: `&`, `|`, `^`, `<<`, `>>`
+- **Miscellaneous**: `++`, `--`, `+=`, `-=`, `*=`, `/=`
+
+---
+
+### **2. Object Handling**
+
+- **Class Definition**: Simulated using functions, where each class is a function that returns methods and properties.
+- **Creating Instances**: Functions represent instances that maintain state and methods.
+- **Method Access**: Methods are accessed using the `.` notation.
+
+#### **Example of Object Handling**:
+```plaintext
+class Person:
+    name = ""
+    age = 0
+    
+    func __init__(self, name, age):
+        self.name = name
+        self.age = age
+        return self
+
+    func greet(self):
+        return "Hello, my name is " + self.name
+
+func create_person:
+    p = Person("John", 30)
+    return p.greet()
+
+func main:
+    return create_person()  # "Hello, my name is John"
+```
+
+---
+
+### **3. Graphics Handling**
+
+**Basic 2D Graphics** functions for initializing a canvas, drawing shapes, and updating the display:
+
+- `set_canvas(width, height)`
+- `set_color(color)`
+- `draw_circle(x, y, radius)`
+- `draw_rectangle(x, y, width, height)`
+- `clear_canvas()`
+- `update_display()`
+
+#### **Example of 2D Graphics**:
+```plaintext
+func set_canvas(width, height):
+    return GraphicsLib.initialize_canvas(width, height)
+
+func set_color_red:
+    return GraphicsLib.set_color("red")
+
+func draw_circle(x, y, radius):
+    return GraphicsLib.draw_circle(x, y, radius)
+
+func update_display:
+    return GraphicsLib.update_display()
+
+func main:
+    set_canvas(800, 600)
+    set_color_red()
+    draw_circle(400, 300, 50)
+    update_display()
+    return 0
+```
+
+---
+
+### **4. 3D Graphics**
+
+3D graphics handling involves creating 3D objects, applying transformations (translation, rotation, scaling), and rendering the scene:
+
+- `initialize_3d_scene()`
+- `create_cube(x, y, z, size)`
+- `rotate_object(obj, angle, axis)`
+- `scale_object(obj, scaleX, scaleY, scaleZ)`
+- `update_3d_display()`
+
+#### **Example of 3D Graphics**:
+```plaintext
+func initialize_3d_scene:
+    return GraphicsLib3D.initialize_scene()
+
+func create_cube(x, y, z, size):
+    return GraphicsLib3D.create_cube(x, y, z, size)
+
+func rotate_object(obj, angle, axis):
+    return GraphicsLib3D.rotate(obj, angle, axis)
+
+func scale_object(obj, scaleX, scaleY, scaleZ):
+    return GraphicsLib3D.scale(obj, scaleX, scaleY, scaleZ)
+
+func animate_3d_cube:
+    cube = create_cube(0, 0, 0, 1)
+    angle = 0
+    while angle < 360:
+        clear_canvas()
+        rotate_object(cube, angle, "Y")
+        scale_object(cube, 1.5, 1.5, 1.5)
+        update_3d_display()
+        angle += 1
+        return animate_3d_cube()
+
+func main:
+    return animate_3d_cube()
+```
+
+---
+
+### **5. Event Handling**
+
+**Event handling** in **ROPLang** listens for mouse clicks, key presses, and dispatches events to handlers:
+
+- **Event Listeners**: `initialize_mouse_listener()`, `initialize_keyboard_listener()`
+- **Event Loop**: Checks for events and triggers the appropriate handler.
+
+#### **Example of Event Handling**:
+```plaintext
+func initialize_event_listeners:
+    return EventLib.initialize_mouse_listener()
+    return EventLib.initialize_keyboard_listener()
+
+func on_mouse_click(x, y):
+    return print("Mouse clicked at position (" + x + ", " + y + ")")
+
+func on_key_press(key):
+    if key == "Enter":
+        return print("Enter key pressed")
+    elif key == "Escape":
+        return print("Escape key pressed")
+    else:
+        return print("Key pressed: " + key)
+
+func event_loop:
+    while true:
+        event = EventLib.check_for_event()
+        if event == "mouse_click":
+            return on_mouse_click(event.x, event.y)
+        elif event == "key_press":
+            return on_key_press(event.key)
+
+func main:
+    initialize_event_listeners()
+    return event_loop()
+```
+
+---
+
+### **6. Pattern Handling**
+
+Pattern matching enables **ROPLang** to match strings, arrays, or even complex data structures. This can be done using regular expressions or simple comparisons.
+
+#### **Pattern Matching Example**:
+```plaintext
+func match_pattern_string(input):
+    if input == "Hello":
+        return "Pattern matched: Hello"
+    elif input == "World":
+        return "Pattern matched: World"
+    else:
+        return "No pattern matched"
+
+func match_regex(input, pattern):
+    return RegexLib.match(input, pattern)
+
+func match_array_pattern(arr):
+    if arr == [1, 2, 3]:
+        return "Array pattern matched: [1, 2, 3]"
+    elif arr == [4, 5, 6]:
+        return "Array pattern matched: [4, 5, 6]"
+    else:
+        return "No array pattern matched"
+
+func main:
+    return match_pattern_string("Hello")  # Returns "Pattern matched: Hello"
+```
+
+---
+
+### **7. Enhanced Error Handling with "Identifier-and-Detail"**
+
+This feature allows errors to be reported with both the **identifier** (where the error occurred) and **details** (what caused the error). It enhances debugging by providing more context about the error.
+
+#### **Example of Enhanced Error Handling**:
+```plaintext
+func divide(a, b):
+    if b == 0:
+        return error("divide", "DivisionByZero: Cannot divide by zero")
+    else:
+        return a / b
+
+func access_array(arr, index):
+    if index < 0 or index >= len(arr):
+        return error("access_array", "IndexOutOfBounds: Index " + index + " is out of bounds for array of length " + len(arr))
+    return arr[index]
+
+func error(identifier, detail):
+    return "ERROR: [" + identifier + "] - " + detail
+
+func main:
+    result = divide(10, 0)  # This will throw an error
+    arr = [1, 2, 3]
+    value = access_array(arr, 5)  # This will throw an error
+    return 0
+```
+
+#### **Error Output**:
+```
+ERROR: [divide] - DivisionByZero: Cannot divide by zero
+ERROR: [access_array] - IndexOutOfBounds: Index 5 is out of bounds for array of length 3
+```
+
+---
+
+### **8. Final Thoughts**
+
+With these additions, **ROPLang** becomes a powerful language that supports:
+- **Object-Oriented Programming**: Through the creation of classes, methods, and instances.
+- **2D and 3D Graphics**: For visualizing data, creating games, or building interactive applications.
+- **Event-Driven Programming**: Enabling responsiveness to user inputs like mouse clicks and key presses.
+- **Pattern Matching**: To process data structures efficiently and effectively.
+- **Robust Error Handling**: With clear, informative error messages that include **identifier** and **detail** to make debugging much easier.
+
+This language allows for a flexible and powerful programming environment while adhering to its core **return-oriented** paradigm, making it suitable for a wide variety of applications, from simulations and games to interactive UIs and complex data processing.
