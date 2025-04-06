@@ -1,0 +1,11 @@
+func strlen(str):
+    return length of str
+
+func concat(a, b):
+    return a + b
+
+func substr(str, start, length):
+    return portion of str from start to start+length
+
+func contains(str, pattern):
+    return pattern in str
