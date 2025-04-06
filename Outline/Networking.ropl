@@ -1,0 +1,17 @@
+func create_server_socket(port):
+    return NetworkLib.create_server_socket(port)
+
+func accept_connection(server_socket):
+    return NetworkLib.accept_connection(server_socket)
+
+func handle_client_data(client_socket):
+    data = receive_data(client_socket)
+    return send_data(client_socket, "Received: " + data)
+
+func main:
+    server_socket = create_server_socket(8080)
+    client_socket = accept_connection(server_socket)
+    handle_client_data(client_socket)
+    close_socket(server_socket)
+    close_socket(client_socket)
+    return 0
