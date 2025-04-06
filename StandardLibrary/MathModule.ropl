@@ -1,0 +1,22 @@
+func add(a, b):
+    return a + b
+
+func sub(a, b):
+    return a - b
+
+func mul(a, b):
+    return a * b
+
+func div(a, b):
+    if b == 0:
+        return error("DivideByZero")
+    return a / b
+
+func mod(a, b):
+    return a % b
+
+func pow(a, b):
+    return a ^ b  # If ^ is power in this context
+
+func abs(x):
+    return x < 0 ? -x : x
