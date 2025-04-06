@@ -1,0 +1,14 @@
+exception MyException extends Exception:
+    var message
+    func __init__(message):
+        self.message = message
+
+# Throwing and Catching the Custom Exception
+func may_throw_exception(x):
+    if x == 0:
+        raise MyException("Cannot divide by zero")
+
+try:
+    may_throw_exception(0)
+catch MyException as e:
+    print("Caught an exception: " + e.message)
