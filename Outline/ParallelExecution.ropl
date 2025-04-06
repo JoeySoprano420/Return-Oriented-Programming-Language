@@ -1,0 +1,5 @@
+func parallel_computation:
+    result = parallel [1, 2, 3, 4].map(func(x):
+        return x * 2
+    )
+    return result  # Should return [2, 4, 6, 8]
