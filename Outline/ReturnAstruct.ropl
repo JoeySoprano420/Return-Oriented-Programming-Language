@@ -1,0 +1,10 @@
+struct Point:
+    var x: float
+    var y: float
+
+func create_point(x: float, y: float) -> Point:
+    return Point(x, y)
+
+let point = create_point(10.5, 20.3)
+print(point.x)  # Output: 10.5
+print(point.y)  # Output: 20.3
