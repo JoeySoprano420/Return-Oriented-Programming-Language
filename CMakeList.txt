@@ -1,0 +1,80 @@
+# Minimum required version of CMake
+cmake_minimum_required(VERSION 3.14)
+
+# Set the project name and version
+project(ROP-Lang IDE C++ Backend VERSION 1.0 LANGUAGES CXX)
+
+# Set the C++ standard to be used
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Set the paths for LLVM and other dependencies
+find_package(LLVM REQUIRED CONFIG)
+
+# Specify the source files for the project
+set(SOURCES
+    src/main.cpp
+    src/llvm_codegen.cpp
+    src/concurrency.cpp
+    src/splicing_tunnel.cpp
+    src/chain_debugger.cpp
+    src/file_watcher.cpp
+)
+
+# Set the include directories
+include_directories(${LLVM_INCLUDE_DIRS})
+include_directories(include)
+
+# Specify additional libraries to link against
+set(LINK_LIBS
+    LLVMCore
+    LLVMExecutionEngine
+    LLVMTarget
+    LLVMTransforms
+    LLVMAsmParser
+    LLVMIRReader
+    LLVMSupport
+    pthread
+)
+
+# Add the executable for the project
+add_executable(rop_backend ${SOURCES})
+
+# Link the necessary libraries
+target_link_libraries(rop_backend PRIVATE ${LINK_LIBS})
+
+# Add compile flags to optimize for performance
+target_compile_options(rop_backend PRIVATE
+    -O3
+    -Wall
+)
+
+# Add custom commands to handle inline build and compile tasks
+add_custom_target(build_all
+    COMMAND ${CMAKE_BINARY_DIR}/rop_backend
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Building and running the ROP-Lang IDE backend"
+)
+
+add_custom_target(compile_all
+    COMMAND ${CMAKE_COMMAND} -E echo "Compiling ROP-Lang code..."
+    COMMAND ${CMAKE_BINARY_DIR}/rop_backend
+    COMMENT "Compiling and optimizing the code"
+)
+
+# File watching and automatic rebuild (useful for live development)
+find_package(inotify REQUIRED)
+add_custom_command(
+    TARGET rop_backend POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E echo "Starting file watching for live changes..."
+    COMMAND inotifywait -m -r -e modify,create,delete ${CMAKE_SOURCE_DIR}/src
+    COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR}
+    COMMENT "Watching for file changes"
+)
+
+# Optional: Handle external libraries and dependencies (if any)
+# find_package(Boost REQUIRED)
+# target_link_libraries(rop_backend PRIVATE Boost::Boost)
+
+# Define installation paths (optional)
+# install(TARGETS rop_backend DESTINATION bin)
