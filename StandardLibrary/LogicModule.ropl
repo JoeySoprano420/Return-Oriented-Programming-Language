@@ -1,0 +1,11 @@
+func and(a, b):
+    return a && b
+
+func or(a, b):
+    return a || b
+
+func not(a):
+    return !a
+
+func xor(a, b):
+    return (a || b) && !(a && b)
