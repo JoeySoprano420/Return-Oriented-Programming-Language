@@ -1,0 +1,2 @@
+let length = len("Hello")  # Result is 5
+let greeting = concat("Hello", " World!")  # Result is "Hello World!"
