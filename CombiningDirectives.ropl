@@ -1,0 +1,21 @@
+@bind "jump_addr" => %R8
+
+@fuse "startup_burst" => (
+    call init_memory,
+    call @wrap("guard" => { exec: { jmp %R8 } }),
+    call prepare_sandbox
+)
+
+@injectQ "hotstream" => queue [
+    call %R8,
+    exec_chain("hotPatchLayer"),
+    link_splice("net://layer-7")
+]
+
+@chain "rescue_chain" => [
+    call monitor_uplink,
+    call handle_timeout,
+    injectQ_trigger("hotstream")
+]
+
+return exec_fuse("startup_burst")
