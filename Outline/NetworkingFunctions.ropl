@@ -1,0 +1,3 @@
+let socket = connect_to_server("localhost", 8080)
+send_data(socket, "Hello Server!")
+let response = receive_data(socket)
