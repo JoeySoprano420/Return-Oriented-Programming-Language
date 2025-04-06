@@ -1,0 +1,13 @@
+# Asynchronous task returning a promise
+func fetch_data_async:
+    promise = Promise.create()
+    ThreadLib.spawn(lambda:
+        wait(1000)
+        promise.resolve("Fetched Data!")
+    )
+    return promise
+
+# Using await in another function
+func main:
+    result = await(fetch_data_async())
+    return "Received: " + result
