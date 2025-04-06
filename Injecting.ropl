@@ -1,0 +1,7 @@
+@injectQ "boot_inject" => queue [
+    push 0x0F,
+    mov %RAX, #BOOTADDR,
+    call %RAX
+]
+
+injectQ_trigger("boot_inject") on event("init_flag")
