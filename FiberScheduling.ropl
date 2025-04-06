@@ -1,0 +1,11 @@
+func fiber_task:
+    print("Step 1")
+    Fiber.yield()
+    print("Step 2")
+    return "Done"
+
+func main:
+    f = Fiber.start(fiber_task)
+    Fiber.resume(f)  # Outputs "Step 1"
+    Fiber.resume(f)  # Outputs "Step 2"
+    return "Fiber Completed"
