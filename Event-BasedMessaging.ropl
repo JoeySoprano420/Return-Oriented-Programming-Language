@@ -1,0 +1,12 @@
+# Listen for a custom event
+func setup_listener:
+    Event.on("dataReady", handle_data)
+
+func handle_data(payload):
+    print("Event Fired: " + payload)
+    return "Handled"
+
+# Somewhere else...
+func trigger_event:
+    Event.emit("dataReady", "Payload123")
+    return "Event Triggered"
