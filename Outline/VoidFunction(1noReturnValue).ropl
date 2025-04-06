@@ -1,0 +1,4 @@
+func print_hello() -> void:
+    print("Hello World!")
+
+print_hello()  # Output: Hello World!
