@@ -1,0 +1,9 @@
+# Multiple return values
+func get_user_info(user_id):
+    return "Alice", 30, "Engineer"
+
+let name, age, profession = get_user_info(1)
+
+# Higher-order function
+let numbers = [1, 2, 3, 4, 5]
+let doubled = apply_to_all(func(x): return x * 2, numbers)
