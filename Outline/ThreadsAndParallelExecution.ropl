@@ -1,0 +1,4 @@
+spawn_thread(func():
+    print("Running in parallel"))
+
+let result = parallel [1, 2, 3].map(func(x): return x * 2)
