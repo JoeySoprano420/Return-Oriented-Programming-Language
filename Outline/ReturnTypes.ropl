@@ -1,3 +1,74 @@
 func function_name(parameters) -> return_type:
     # Function body
     return value_of_return_type
+
+func get_age() -> int:
+    return 30
+
+func get_name() -> string:
+    return "Alice"
+
+func get_numbers() -> array:
+    return [1, 2, 3, 4, 5]
+
+func get_person() -> dictionary:
+    return Dictionary("name" => "John", "age" => 30)
+
+struct Point:
+    var x: int
+    var y: int
+
+func create_point(x: int, y: int) -> Point:
+    return Point(x, y)
+
+func print_hello() -> void:
+    print("Hello World!")
+
+func find_user(id: int) -> optional<string>:
+    if id == 1:
+        return "Alice"
+    else:
+        return null
+
+func get_value() -> union<int, string>:
+    return 42
+
+func get_user_info(user_id: int) -> tuple(string, int, string):
+    return "Alice", 30, "Engineer"
+
+let name, age, profession = get_user_info(1)
+
+# Return an int
+func add(a: int, b: int) -> int:
+    return a + b
+
+# Return a string
+func greet(name: string) -> string:
+    return "Hello, " + name
+
+# Return a dictionary
+func get_person() -> dictionary:
+    return Dictionary("name" => "John", "age" => 30)
+
+# Return a tuple
+func get_coordinates() -> tuple(float, float):
+    return 1.23, 4.56
+
+# Return an optional value
+func find_item(id: int) -> optional<string>:
+    if id == 101:
+        return "Item Found"
+    else:
+        return null
+
+# Void function
+func print_message() -> void:
+    print("This is a message.")
+
+# Return a union of types
+func get_random_value() -> union<int, string>:
+    if random_condition():
+        return 42
+    else:
+        return "Hello"
+
