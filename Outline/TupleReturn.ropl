@@ -1,0 +1,6 @@
+func get_coordinates() -> tuple(float, float):
+    return 1.23, 4.56
+
+let x, y = get_coordinates()
+print(x)  # Output: 1.23
+print(y)  # Output: 4.56
