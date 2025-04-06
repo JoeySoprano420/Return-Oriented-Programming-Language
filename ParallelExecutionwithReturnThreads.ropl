@@ -1,0 +1,25 @@
+# Create a new thread to run a function in parallel
+func spawn_thread(task):
+    return ThreadLib.spawn(task)
+
+# Wait for a thread to complete
+func join_thread(thread):
+    return ThreadLib.join(thread)
+
+# A long-running computation task
+func heavy_task:
+    count = 0
+    while count < 1000000:
+        count = count + 1
+    return "Heavy Task Done"
+
+# Another task
+func light_task:
+    return "Light Task Complete"
+
+# Main function using concurrency
+func main:
+    thread1 = spawn_thread(heavy_task)  # Run heavy_task in parallel
+    result2 = light_task()  # Do light_task in main thread
+    result1 = join_thread(thread1)  # Wait for heavy_task to complete
+    return result2 + " | " + result1
