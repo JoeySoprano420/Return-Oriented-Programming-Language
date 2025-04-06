@@ -1,0 +1,8 @@
+@bind "loader" => %RAX
+@wrap "hotLoader" => {
+    condition: if_reg("ready", 1),
+    exec: { call %RAX }
+}
+@link "exec://runtime/bootenv" => @splicedExec
+
+return exec(wrap_resolve("hotLoader"))
