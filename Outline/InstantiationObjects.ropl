@@ -1,0 +1,2 @@
+let obj = MyClass("Hello")
+obj.print_attribute()  # Output: Hello
