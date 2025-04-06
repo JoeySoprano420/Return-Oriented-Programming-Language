@@ -1,0 +1,5 @@
+func greet(name: string) -> string:
+    return "Hello, " + name + "!"
+
+let message = greet("Alice")
+print(message)  # Output: Hello, Alice!
