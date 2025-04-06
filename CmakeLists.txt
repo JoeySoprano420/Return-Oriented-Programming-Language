@@ -1,0 +1,46 @@
+cmake_minimum_required(VERSION 3.20)
+project(roplang LANGUAGES C CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+
+# Gather all source files recursively
+file(GLOB_RECURSE SOURCES
+    src/*.cpp
+    src/*.c
+    src/**/*.cpp
+    src/**/*.c
+)
+
+# LLVM Config
+option(ROPLANG_USE_LLVM "Use LLVM for JIT compilation" ON)
+
+if(ROPLANG_USE_LLVM)
+    find_package(LLVM REQUIRED CONFIG)
+    message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
+    message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
+    include_directories(${LLVM_INCLUDE_DIRS})
+    add_definitions(${LLVM_DEFINITIONS})
+    list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_DIR}")
+endif()
+
+# Executable target
+add_executable(roplang ${SOURCES})
+
+# Link LLVM if enabled
+if(ROPLANG_USE_LLVM)
+    llvm_map_components_to_libnames(LLVM_LIBS support core irreader nativecodegen mcjit native)
+    target_link_libraries(roplang PRIVATE ${LLVM_LIBS})
+endif()
+
+# Include common headers
+include_directories(
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/src/core
+    ${CMAKE_SOURCE_DIR}/src/parse
+    ${CMAKE_SOURCE_DIR}/src/runtime
+    ${CMAKE_SOURCE_DIR}/src/llvm
+)
+
+# Optional: Add warnings and optimizations
+target_compile_options(roplang PRIVATE -Wall -O3 -Wno-deprecated-declarations)
