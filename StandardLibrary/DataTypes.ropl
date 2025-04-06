@@ -1,0 +1,14 @@
+func min(a, b):
+    return a < b ? a : b
+
+func max(a, b):
+    return a > b ? a : b
+
+func clamp(val, low, high):
+    return val < low ? low : (val > high ? high : val)
+
+func swap(a, b):
+    temp = a
+    a = b
+    b = temp
+    return (a, b)
