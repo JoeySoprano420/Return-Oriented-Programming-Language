@@ -1,0 +1,5 @@
+@bind "valNode" => %R15     ; Bind label to register
+@bind "opStruct" => #BUF:0xFF2  ; Bind to static buffer
+@bind "telemetry_x" => @splice[CH-9]  ; Bind to spliced node
+
+return $binds["valNode"]   ; Return resolved value
