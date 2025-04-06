@@ -1,0 +1,2 @@
+let square = func(x): return x * x
+let result = square(5)  # Result is 25
