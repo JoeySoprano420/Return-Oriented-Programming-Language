@@ -1,0 +1,6 @@
+# Assuming a shared C library with a function `int add(int, int)`
+func load_and_use_c_library:
+    library = load_library("libmath.so")
+    result = call_function(library, "add", [5, 7])
+    unload_library(library)
+    return result  # Should return 12
