@@ -1,0 +1,7 @@
+func try(func, fallback):
+    result = func()
+    return result != error ? result : fallback
+
+func error(msg):
+    print("Error: " + msg)
+    return null
