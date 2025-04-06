@@ -1,0 +1,6 @@
+if condition1:
+    # Block A
+elif condition2:
+    # Block B
+else:
+    # Block C
