@@ -1,0 +1,4 @@
+let age = 25      # Integer
+let price = 19.99  # Float
+let name = "John"  # String
+let is_active = true  # Boolean
