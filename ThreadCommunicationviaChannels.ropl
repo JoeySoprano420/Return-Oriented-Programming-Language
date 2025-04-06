@@ -1,0 +1,13 @@
+func sender(ch):
+    ch.send("Ping from sender")
+    return "Sent"
+
+func receiver(ch):
+    msg = ch.recv()
+    return "Received: " + msg
+
+func main:
+    ch = Channel.create(1)
+    ThreadLib.spawn(lambda: sender(ch))
+    result = receiver(ch)
+    return result
