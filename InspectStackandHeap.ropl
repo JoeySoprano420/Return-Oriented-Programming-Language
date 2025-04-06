@@ -1,0 +1,11 @@
+func main:
+    call_stack = Inspect.stack()
+    heap_state = Inspect.heap()
+
+    foreach frame in call_stack:
+        print("Function: " + frame.func + ", Line: " + frame.line)
+
+    foreach obj in heap_state:
+        print("Object: " + obj.id + ", Size: " + obj.size)
+
+    return "Inspection Complete"
