@@ -1,0 +1,7 @@
+@fuse "auth_fuse" => (
+    call verify_signature,
+    call decrypt_payload,
+    call integrity_check
+)
+
+return exec_fuse("auth_fuse")
