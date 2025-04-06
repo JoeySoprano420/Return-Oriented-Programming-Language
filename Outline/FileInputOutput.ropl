@@ -1,0 +1,15 @@
+func read_file_content(file):
+    return FileLib.read_file(file)
+
+func write_to_file(file, content):
+    return FileLib.write_file(file, content)
+
+func main:
+    file = open_file("example.txt", "w")
+    write_to_file(file, "Hello, World!")
+    close_file(file)
+
+    file = open_file("example.txt", "r")
+    content = read_file_content(file)
+    close_file(file)
+    return content  # Returns "Hello, World!"
