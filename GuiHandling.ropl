@@ -1,0 +1,14 @@
+func create_window(title, width, height):
+    return GUILib.create_window(title, width, height)
+
+func create_button(label, x, y, width, height, callback):
+    return GUILib.create_button(label, x, y, width, height, callback)
+
+func on_button_click:
+    return print("Button clicked!")
+
+func main:
+    create_window("My Window", 400, 300)
+    create_button("Click Me", 50, 50, 100, 30, on_button_click)
+    show_window()
+    return 0
