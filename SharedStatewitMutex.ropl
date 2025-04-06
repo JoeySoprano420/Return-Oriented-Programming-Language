@@ -1,0 +1,6 @@
+# Acquire a lock before modifying shared data
+func lock_and_write(shared_data, mutex, value):
+    MutexLib.lock(mutex)
+    shared_data["count"] = value
+    MutexLib.unlock(mutex)
+    return "Updated safely"
