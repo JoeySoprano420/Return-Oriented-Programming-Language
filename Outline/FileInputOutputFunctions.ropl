@@ -1,0 +1,3 @@
+let data = read_file("file.txt")
+write_file("newfile.txt", "Hello, World!")
+append_to_file("file.txt", "\nAdditional text.")
