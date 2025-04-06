@@ -1,0 +1,12 @@
+func setup:
+    ref<User> u = allocate_user("Jenn")
+    log(u.name)  # valid
+
+    free(u)
+    log(u.name)  # ERROR: Use-after-free detected
+
+func allocate_user(name):
+    return ref_create({ name: name, age: 22 })
+
+func free(u):
+    return ref_destroy(u)
