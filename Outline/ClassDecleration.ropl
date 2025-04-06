@@ -1,0 +1,8 @@
+class MyClass:
+    var attribute
+
+    func __init__(self, attribute_value):
+        self.attribute = attribute_value
+
+    func print_attribute():
+        print(self.attribute)
