@@ -1,0 +1,11 @@
+func divide(a: int, b: int) -> optional<float>:
+    if b == 0:
+        return null  # Division by zero
+    else:
+        return a / b
+
+let result = divide(10, 0)
+if result != null:
+    print(result)
+else:
+    print("Error: Division by zero")  # Output: Error: Division by zero
