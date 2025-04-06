@@ -1,0 +1,6 @@
+func get_person_info() -> dictionary:
+    return Dictionary("name" => "John", "age" => 30)
+
+let person = get_person_info()
+print(person["name"])  # Output: John
+print(person["age"])   # Output: 30
