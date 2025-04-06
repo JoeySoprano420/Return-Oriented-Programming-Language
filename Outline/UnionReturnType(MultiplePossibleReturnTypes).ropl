@@ -1,0 +1,8 @@
+func get_random_value() -> union<int, string>:
+    if random_condition():
+        return 42
+    else:
+        return "Hello"
+
+let value = get_random_value()
+print(value)  # Output: Could be either 42 or "Hello" depending on the random condition
