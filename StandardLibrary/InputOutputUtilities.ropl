@@ -1,0 +1,15 @@
+func print(val):
+    output val
+    return 0
+
+func println(val):
+    output val + "\n"
+    return 0
+
+func read():
+    input = user_input()
+    return input
+
+func prompt(msg):
+    output msg
+    return read()
