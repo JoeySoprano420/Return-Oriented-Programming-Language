@@ -1,0 +1,5 @@
+Inlining.set_policy({
+    threshold_size: 20,       # max bytecode size to inline
+    prefer_recursion: false,
+    loop_unroll_depth: 2
+})
