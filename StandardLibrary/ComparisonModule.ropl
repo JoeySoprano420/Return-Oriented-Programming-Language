@@ -1,0 +1,17 @@
+func eq(a, b):
+    return a == b
+
+func neq(a, b):
+    return a != b
+
+func gt(a, b):
+    return a > b
+
+func lt(a, b):
+    return a < b
+
+func gte(a, b):
+    return a >= b
+
+func lte(a, b):
+    return a <= b
